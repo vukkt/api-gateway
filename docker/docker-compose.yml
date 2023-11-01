@@ -1,0 +1,30 @@
+version: "3.5"
+services:
+
+  # Sofia Backend application 
+  sofia-api-gateway:
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx512m
+    build:
+      context: sofia-plugin-container
+      args:
+        DB_IP: bd4nrgdb
+        DB_PORT: 3306
+        DB_NAME: sofia
+        DB_USERNAME: root
+        DB_PASSWORD: root
+        SOFIA_URI: http://sofia-backend:15502/api
+      dockerfile: Dockerfile
+    image: sofia-api-gateway
+    container_name: sofia-api-gateway
+    ports:
+      - "15502:15502"
+    restart: unless-stopped
+    networks:
+      - bd4nrg 
+      
+networks:
+  bd4nrg:
+    external: true
+    name: bd4nrg
+    driver: bridge
