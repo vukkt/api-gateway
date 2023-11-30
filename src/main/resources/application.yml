@@ -2,7 +2,6 @@ server:
   port: 15502
 
 notification_plugin: http://sofia-notification-plugin:15555
-sofia_ip: http://sofia-backend:15502
 
 spring:
   application:
@@ -22,8 +21,7 @@ spring:
           uri: ${notification_plugin}
           predicates:
             - Path=/api/asset-image/**, /api/asset-image, /api/notification/**, /api/notification
-        - id: SOFIA
-          uri: ${sofia_ip}
-          predicates:
-            - Path=/api/**
 
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

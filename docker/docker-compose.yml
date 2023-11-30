@@ -18,7 +18,7 @@ services:
     image: sofia-api-gateway
     container_name: sofia-api-gateway
     ports:
-      - "15502:15502"
+      - "15505:15502"
     restart: unless-stopped
     networks:
       - bd4nrg 
